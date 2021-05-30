@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+</head>
+<body>
+<!-- Создайте счетчик секунд, который начинает отчет с 1 и заканчивается на 30,
+также добавьте кнопки которые останавливают отчет, и запускают его заново и добавьте кнопку
+обнуляющую отcчет. Также попробуйте изменить код так чтобы отсчет начинался с 30 и заканчивался на 1. -->    
+    <p id='timer'></p>
+    <input type="button" id='start' value="start" onclick="start()">
+    <input type="button" id='stop' value="stop" onclick="stop()">
+    <input type="button" id='reset' value="reset" onclick="reset()">
+    <input type="checkbox" id="revers" value="" onchange="revers()"><span>revers</span>
+    <script>
+        var linkTimer;
+        var p=document.querySelector('p');
+        var startTime=1;
+        var endTime=30;
+        var stepTime=1;
+        function reset(){
+            stop();
+            document.querySelector('#revers').checked=false;
+            revers ();
+            startTime=1;
+            p.innerText='Reset...';
+        }
+        function revers (){
+            endTime=document.querySelector('#revers').checked ? 1 : 30;
+        }
+        function start(){
+            linkTimer=setInterval( function (){
+                p.innerText=startTime;
+                if (startTime==endTime)
+                    return stop();
+                document.querySelector('#revers').checked ? startTime--: startTime++;
+            },stepTime*1000);
+        }
+        function stop(){
+            clearInterval(linkTimer);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+﻿<!-- 
+    Запросите у пользователя ввести какую-то фразу. 
+    Отобразите каждое отдельное слово в виде списка ul li. 
+    Также отобразите первое слово UPPERCASE, а последние 2 с маленькой. 
+    Найдите все буквы "а" их количество в модальное окно. 
+ -->
+ 
+ <!DOCTYPE html>
+ <html >
+ <head>
+     <meta charset="UTF-8">
+     <title>Homework</title>
+ </head>
+ <body>
+    <label for="input">
+        Введите произвольный текст
+    </label>
+    <input type="text" id='userText'>
+    <p>
+        <input type="button" id='run' value="Выполнить" onclick="run()">
+    </p>
+    <ul></ul>
+    <script>
+        function run(){
+            var userText=document.querySelector('#userText').value;
+            var arrText=userText.split(' ');
+            if (arrText.length<3)
+            {
+                alert('Слишком короткий текст');
+                return;
+            }
+            var ul=document.querySelector('ul');
+            for (const key in arrText) {
+                var li=document.createElement('li');
+                li.innerText=arrText[key];
+                ul.appendChild(li);
+            }
+            var body=document.querySelector('body');
+            var p=document.createElement('p');
+            p.innerText=arrText[0].toUpperCase();
+            body.appendChild(p);
+            for(var i=arrText.length-2;i<arrText.length;i++){
+                p=document.createElement('p');
+                p.innerText=arrText[i][0].toLowerCase()+arrText[i].substr(1);
+                body.appendChild(p);
+            }
+            alert('найдено букв a: '+userText.replace(/[^aа]/gi, "").length);
+
+        }
+    </script>
+ </body>
+ </html>

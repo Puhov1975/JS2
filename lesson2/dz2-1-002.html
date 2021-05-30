@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>All, Elements</title>
+    <!-- <style>
+    * {
+        color: red;
+        text-decoration: none;
+    }
+    p {
+        color: brown;
+    }
+    .class {
+        color: green;
+    }
+    a {
+        font-weight: bold;
+        font-style: italic;
+        text-decoration: underline;
+    }
+    p, a {
+        text-transform: uppercase;
+    }
+    </style> -->
+</head>
+<body>
+    <h1 class="class1" id="id1">Title</h1>
+    <p class="class">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+    <a href="#">Link</a>
+    <script>
+        document.querySelectorAll('*').forEach (function(a){
+            a.style.color = 'red';
+            a.style.textDecoration = 'none';
+        })
+        document.querySelectorAll('p').forEach (function(a){
+            a.style.color = 'brown';
+        })
+        document.querySelectorAll('.class').forEach (function(a){
+            a.classList.add('newclass');
+            a.style.color = 'green';
+            console.log(a.style);
+
+        })
+        document.querySelectorAll('a').forEach (function(a){
+                a.style.fontWeight='bold';
+                a.style.fontStyle= 'italic';
+                a.style.textDecoration= 'underline';
+        })
+        document.querySelectorAll('p, a').forEach (function(a){
+                a.style.textTransform= 'uppercase';
+        })
+         
+    </script>
+</body>
+</html>

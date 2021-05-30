@@ -1,0 +1,42 @@
+﻿<!-- Напишите регулярные выражения, которые будут выбирать 
+    индекс - 55535 - 5 numbers
+    ip адресс, пример 255.255.255.255
+    цены в долларах - $0.84, $1232.84, $4
+    дата в виде - 30/12/2016 - день, месяц, год
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+ 	<meta charset="UTF-8">
+ 	<title>Document</title>
+ </head>
+ <body>
+     Lorem ipsum dolor sit amet  55555 consectetur adipisicing elit. Fuga deserunt 48961 rerum atque vero soluta error illo, mollitia hic necessitatibus harum 33125 ipsam veniam! Placeat cumque tempore voluptatibus velit quo quasi dolores.
+     Напишите регулярные выражения, которые будут выбирать 
+     индекс - 55535 - 5 numbers
+     ip адресс, пример 255.255.255.255
+     цены в долларах - $0.84, $1232.84, $4
+     дата в виде - 30/12/2016 - день, месяц, год
+ <script type="text/javascript">
+        var text=document.querySelector('body').innerText;
+        console.log(text);
+        var reg=/\s\d{5}\s/g;
+        text.match(reg).forEach(function(a){
+            console.log('Индекс',a.trim());;
+        });
+        reg=/\s\d{3}.\d{3}.\d{3}.\d{3}\s/g;
+        text.match(reg).forEach(function(a){
+            console.log('IP',a.trim());
+        });
+        reg=/\$\d{1,}\.?\d*/g;
+        text.match(reg).forEach(function(a){
+            console.log('цены в долларах',a.trim());
+        });
+        reg=/\d{1,2}\/\d{1,2}\/\d{4}/g;
+        text.match(reg).forEach(function(a){
+            console.log('даты',a.trim());
+        });
+
+    </script>
+ </body>
+ </html>
