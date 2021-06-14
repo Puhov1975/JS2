@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+	<title>HomeWork</title>
+	<style>
+		#dad,#move {
+			background: red;
+			height: 100px;
+			width: 100px;
+			position: absolute;
+		}
+		#dad {
+			
+			top: 200px;
+			
+		}
+		button {
+			position: absolute;
+			top: 110px;
+		}
+	</style>
+</head>
+<body>
+    <!-- 
+	1. drag and drop;
+	2. создайте div, при клике на него, div начинает двигаться вправо, при клике на кнопку - останавливается,
+	при попадании div к краю окна, он переходит к началу окна.
+	-->
+	<div draggable="true" id='dad'>drag and drop</div>
+	<button>start/stop</button>
+	<div id='move' style="top:0;left:0;"></div>
+	<script>
+		var dad=document.querySelector('#dad');
+		dad.addEventListener('dragend',dragend);
+		function dragend (e){
+			e.target.style.top=e.pageY+"px";
+			e.target.style.left=e.pageX+"px";
+		}
+
+		var setMove;
+		document.querySelector('#move').addEventListener('click',function (e){
+			var t=e.target;
+			var width=parseInt(getComputedStyle(e.target).width);
+			setMove=setInterval(function (){
+				var left=parseInt(t.style.left);
+				var newleft=left+5;
+				if (newleft+width>screen.width)
+					newleft=0;
+				t.style.left=newleft+'px';
+			},1);
+		});
+		document.querySelector('button').addEventListener('click',function (){
+			clearInterval(setMove);
+		});
+	</script>
+</body>
+</html>

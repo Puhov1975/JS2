@@ -1,0 +1,38 @@
+<!--
+Создайте ссылку и див с текстом внутри, который изначально при загрузке страницы будет скрыт.
+При клике на ссылку див появляется, если повторно нажать ссылку див и текст должны пропасть.
+Также создайте кнопку, которая будет отменять выполнение обработчика клика по ссылке.
+ -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,user-scalable=no">
+        <style>
+            .hide {
+                display:none;
+            }
+        </style>        
+    </head>
+    <body>
+        <a href="#"> Это моя сcылка <br>
+            <div class="div hide">
+                Это мой div
+            </div>
+        </a>
+        <button id="deleteEvent">Удалить обработчик</button>
+
+        <script>
+            var link=document.querySelector('a');
+            link.addEventListener('click',toggle);
+            function toggle (e){
+                e.preventDefault();
+                document.querySelector('.div').classList.toggle('hide');
+            }
+            document.querySelector('button').addEventListener('click',function (){
+                link.removeEventListener('click',toggle);
+            });
+
+
+        </script>
+    </body>
+</html>

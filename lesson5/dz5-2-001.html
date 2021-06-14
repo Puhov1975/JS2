@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+</head>
+<body>
+    <!--
+    1. Создайте 5 блоков с текстом. Добавьте в каждый из блоков кнопку для его удаления.
+    Используйте только один обработчик.
+    -->
+<div id='main'>
+    <div>
+        1 div
+        <button>
+            удалить
+        </button>
+    </div>
+    <div>
+        2 div
+        <button>
+            удалить
+        </button>
+    </div>
+    <div>
+        3 div
+        <button>
+            удалить
+        </button>
+    </div>
+    <div>
+        4 div
+        <button>
+            удалить
+        </button>
+    </div>
+    <div>
+        5 div
+        <button>
+            удалить
+        </button>
+    </div>
+</div>
+    <script>
+        document.querySelector('#main').addEventListener('click', function (e){
+            if (e.target.tagName=='BUTTON') e.target.parentElement.remove();
+        });
+    </script>
+</body>
+</html>
