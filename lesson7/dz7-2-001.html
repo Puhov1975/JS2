@@ -1,0 +1,44 @@
+<!-- Реализуйте последние 2 слайда в презентации с помощью пройденого на уроке материала -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+    
+</head>
+<body>
+    <script type="text/javascript">
+        console.log('слайд 1');
+        function Man() {
+            this.walk = function (){return 'walk OK'} ;
+            this.eat = function (){return 'eat OK'} ;
+            this.drink = function (){return 'drink OK'} ;
+        }
+        function Soldier() {
+            this.shoot = function (){return 'shoot OK'} ;
+            this.showInfo=function (){
+                console.log(this.walk(),this.eat(),this.drink(),this.shoot());
+            };
+        };
+        function Doctor() {
+            this.cure = function (){return'cure OK'} ;
+            this.showInfo=function (){
+                console.log(this.walk(),this.eat(),this.drink(),this.cure());
+            };
+        };
+        Soldier.prototype= new Man();
+        Doctor.prototype= new Man();
+
+        var man = new Man();
+        console.log(man);
+        var soldier=new Soldier();
+        console.log(soldier);
+        soldier.showInfo();
+        var doctor=new Doctor();
+        console.log(doctor);
+        doctor.showInfo();
+        console.log('---------------------------');
+       
+    </script>
+</body>
+</html>

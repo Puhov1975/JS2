@@ -1,0 +1,66 @@
+
+    <!-- Создайте страницу которая запрашивает имя пользователя, если пользователь вводит "Admin" либо "admin" он попадает на страницу,
+    которая оповещает его о том что " Пользоваетль Admin(не статическая строка, а данные что ввел пользователь) вошел в систему"
+    а рядом разместите кнопку "Выход" которая вернет пользователя к модальному окну ввода логина. Реализуйте код как для куки так и для localstorage. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+    <style>
+
+        #infoForm {
+            display: none;
+        }
+        input,button,span {
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form id='loginForm'>
+        <label for="login">введите имя</label>
+        <input type="text" name='login'>
+        <button id='sign'>login</button>
+    </form>
+    <form id='infoForm'>
+        <span id='result'></span>
+        <button id='exit'>exit</button>
+    </form>
+
+    <script>
+        function getCookie() {
+            var cookies={};
+            document.cookie.split(';').forEach(function(e){
+                var cookie=e.split('=');
+                cookies[cookie[0].trim()]=cookie[1].trim();
+            });
+            return cookies;
+        }
+        document.cookie = "Admin=isset";
+        document.cookie = "admin=isset";
+        var loginForm=document.querySelector('#loginForm');
+        var infoForm=document.querySelector('#infoForm');
+        document.querySelector('#sign').addEventListener('click',function (e){
+            e.preventDefault();
+            var loginUser=loginForm.login.value;
+            var cookies=getCookie();
+            if (!cookies[loginUser]) return;
+            loginForm.style.display='none';
+            infoForm.style.display='block';
+            document.getElementById('result').innerText=loginUser;
+        });
+        document.querySelector('#exit').addEventListener('click',function (e){
+            e.preventDefault();
+            loginForm.login.value='';
+            loginForm.style.display='block';
+            infoForm.style.display='none';
+        });
+
+    </script>
+    
+
+</body>
+</html>
